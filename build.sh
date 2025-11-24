@@ -3,7 +3,6 @@
 
 # 设置默认值以确保脚本在不同环境中都能工作
 BUILD_REPO=${BUILD_REPO:-"https://github.com/LiBwrt/openwrt-6.x"}
-REPO_BRANCH=${REPO_BRANCH:-"ipq60xx-6.6"}
 
 # 如果在GitHub Actions环境中，尝试使用环境变量
 if [ -n "$GITHUB_WORKSPACE" ]; then
@@ -11,18 +10,11 @@ if [ -n "$GITHUB_WORKSPACE" ]; then
   if [ -n "$REPO_URL" ]; then
     BUILD_REPO=$REPO_URL
   fi
-  # 如果REPO_BRANCH存在（GitHub Actions环境变量），使用它
-  if [ -n "$REPO_BRANCH" ]; then
-    BRANCH_NAME=$REPO_BRANCH
-  elif [ -n "$GITHUB_REF_NAME" ]; then
-    # 否则尝试使用GITHUB_REF_NAME，但默认回退到ipq60xx-6.6
-    BRANCH_NAME=$GITHUB_REF_NAME
-  else
-    BRANCH_NAME="ipq60xx-6.6"
-  fi
+  # 简化分支选择逻辑，使用main分支作为默认值
+  BRANCH_NAME=${REPO_BRANCH:-"main"}
 else
-  # 非GitHub Actions环境，使用默认分支
-  BRANCH_NAME="ipq60xx-6.6"
+  # 非GitHub Actions环境，直接使用main分支
+  BRANCH_NAME="main"
 fi
 
 get_sources() {
