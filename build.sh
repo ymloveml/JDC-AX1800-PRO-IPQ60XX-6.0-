@@ -2,7 +2,7 @@
 # shellcheck disable=SC2086,SC3043,SC2164,SC2103,SC2046,SC2155
 
 # 设置默认值以确保脚本在不同环境中都能工作
-BUILD_REPO=${BUILD_REPO:-"https://github.com/breeze303/openwrt-ipq60xx.git"}
+BUILD_REPO=${BUILD_REPO:-"https://github.com/LiBwrt/openwrt-6.x"}
 REPO_BRANCH=${REPO_BRANCH:-"ipq60xx-6.6"}
 
 # 如果在GitHub Actions环境中，尝试使用环境变量
