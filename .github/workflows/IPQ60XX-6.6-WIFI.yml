@@ -7,7 +7,7 @@ on:
 
 env:
   REPO_URL: https://github.com/LiBwrt/openwrt-6.x
-  REPO_BRANCH: ipq60xx-6.6
+  REPO_BRANCH: main
   CONFIG_FILE: configs/ipq60xx-6.6-wifi.config
   PATCHES_FILE_1: patches/002-tini_code_fix.patch
   PATCHES_FILE_2: patches/0001-show-soc-status-on-luci.patch
